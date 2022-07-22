@@ -65,8 +65,13 @@ class Game extends Lightning.Component {
     this.tag("Score").text = `Score: ${score}`;
   }
 
+  _active() {
+    this.startGame()
+  }
+
   gameEndHandler() {
     this.game = null;
+    this.endGame()
     Router.navigate("highscore");
   }
 
@@ -87,10 +92,6 @@ class Game extends Lightning.Component {
       this.game.disableGameLoop();
       this.game = null;
     }
-  }
-
-  _setup() {
-    this.startGame()
   }
 
   _handleUp() {
