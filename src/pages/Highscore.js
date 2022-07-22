@@ -1,4 +1,4 @@
-import { Lightning, Colors } from "@lightningjs/sdk";
+import { Lightning, Colors, Router } from "@lightningjs/sdk";
 import Button from "../components/Button";
 import fontStyles from "../lib/fontStyles";
 import styles from "../lib/styles";
@@ -55,6 +55,9 @@ class Highscore extends Lightning.Component {
         PlayAgain: {
           type: Button,
           title: "Play Again",
+          signals: {
+            _buttonPressed: "_buttonPressed",
+          }
         },
 
         GoBackHome: {
@@ -63,6 +66,9 @@ class Highscore extends Lightning.Component {
             marginTop: styles.spacing.medium,
           },
           title: "Home",
+          signals: {
+            _buttonPressed: "_buttonPressed",
+          }
         },
 
         ClearHighscores: {
@@ -71,6 +77,9 @@ class Highscore extends Lightning.Component {
             marginTop: styles.spacing.medium,
           },
           title: "Clear Highscores",
+          signals: {
+            _buttonPressed: "_buttonPressed",
+          }
         },
       },
     };
@@ -92,6 +101,10 @@ class Highscore extends Lightning.Component {
     if (this.index <= 0) {
       this.index = 0;
     }
+  }
+
+  get focusedItem() {
+    return this.tag("Buttons").children[this.index];
   }
 
   _getFocused() {
@@ -119,6 +132,21 @@ class Highscore extends Lightning.Component {
   clearScores() {
     clearHighscores();
     this._renderHighscores();
+  }
+
+  _buttonPressed() {
+    const focusedItem = this.focusedItem._title
+
+    switch(focusedItem) {
+      case "Play Again":
+        // use "back" to avoid router stack buildup 
+        Router.back("game");
+      break;
+      case "Home":
+        Router.navigate("home");
+      break;
+      case "Clear Highscores":
+    }
   }
 }
 
