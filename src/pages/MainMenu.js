@@ -5,7 +5,6 @@ import styles from "../lib/styles";
 
 class MainMenu extends Lightning.Component {
   static _template() {
-    console.log("MAIN MENU")
     return {
       w: 1920,
       h: 1080,
@@ -86,12 +85,10 @@ class MainMenu extends Lightning.Component {
   }
 
   _handleDown() {
-    console.log("HANDLE DOWN")
     this._index = 1;
   }
 
   _handleUp() {
-    console.log("HANDLE UP")
     this._index = 0;
   }
 

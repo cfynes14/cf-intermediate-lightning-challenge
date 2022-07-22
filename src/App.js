@@ -4,7 +4,6 @@ import routes from "./routes";
 
 export default class App extends Router.App {
   _setup() {
-    console.log("STARTING ROUTER")
     Router.startRouter(routes);
   }
   static _template() {
