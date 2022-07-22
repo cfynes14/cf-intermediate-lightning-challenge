@@ -137,17 +137,23 @@ class Highscore extends Lightning.Component {
   _buttonPressed() {
     const focusedItem = this.focusedItem._title
 
-    switch(focusedItem) {
-      case "Play Again":
-        // use "back" to avoid router stack buildup 
-        Router.back("game");
-      break;
-      case "Home":
-        Router.navigate("home");
-      break;
-      case "Clear Highscores":
-        this.clearScores()
-      break;
+    const history = Router.getHistory()
+
+    if (history.length === 0 && focusedItem === "Play Again"){
+      Router.navigate("game")
+    } else {
+      switch(focusedItem) {
+        case "Play Again":
+          // use "back" to avoid router stack buildup 
+          Router.back();
+        break;
+        case "Home":
+          Router.navigate("home");
+        break;
+        case "Clear Highscores":
+          this.clearScores()
+        break;
+      }
     }
   }
 }
