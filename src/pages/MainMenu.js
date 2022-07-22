@@ -100,7 +100,7 @@ class MainMenu extends Lightning.Component {
     if (focusedItem === "Play"){
       Router.navigate("game");
     } else if (focusedItem === "Highscore"){
-      Router.navigate("high_score");
+      Router.navigate("highscore");
     }
   }
 }

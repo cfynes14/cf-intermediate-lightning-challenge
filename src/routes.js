@@ -14,7 +14,7 @@ export default {
             component: Game,
         },
         {
-            path: "high_score",
+            path: "highscore",
             component: Highscore
         }
     ]
