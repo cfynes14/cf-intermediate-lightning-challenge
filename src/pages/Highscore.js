@@ -146,6 +146,8 @@ class Highscore extends Lightning.Component {
         Router.navigate("home");
       break;
       case "Clear Highscores":
+        this.clearScores()
+      break;
     }
   }
 }
